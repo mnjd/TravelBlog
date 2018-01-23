@@ -9,3 +9,7 @@ class Articles(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
     # add thumbnail
+    
+    # function to show title of articles
+    def __str__(self):
+        return self.title
