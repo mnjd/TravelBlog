@@ -13,3 +13,6 @@ class Articles(models.Model):
     # function to show title of articles
     def __str__(self):
         return self.title
+
+    def is_updated(self):
+        return self.created_at != self.updated_at
