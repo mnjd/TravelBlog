@@ -18,4 +18,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.blog, name='blog'),
+    url(r'^detail/(?P<pk>\d+)$', views.article_detail, name='article_detail'),
 ]
