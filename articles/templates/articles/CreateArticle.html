@@ -1,0 +1,21 @@
+{% extends 'articles/blog.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="content">
+        <div class="single-page">
+            <div class="print-main">
+                <h3> Post </h3>
+                    <form method='POST' action=''> {% csrf_token %}
+                    Title:  {{ form.title }} <br> <br>
+                    Author: {{ form.author }}  <br> <br>
+                    Text: {{ form.body }} <br> <br>
+                    <input type='submit' value='Post' />
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
