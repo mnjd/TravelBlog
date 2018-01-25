@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+{% load static %}
   <!-- Theme Made By www.w3schools.com - No Copyright -->
   <title>Homepage</title>
   <meta charset="utf-8">
@@ -75,7 +76,7 @@
 <!-- First Container -->
 <div class="container-fluid bg-1 text-center">
   <h3 class="margin">Travel Blog</h3>
-  <img src="https://c.pxhere.com/photos/fe/17/contaflex_photography_camera_photo_camera_old_collector_photo_camera_vintage-489162.jpg!d" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
+  <img src="{% static 'images/homepage/camera.jpeg' %}" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
   <h3>Discover new places around the world</h3>
 </div>
 
@@ -90,16 +91,16 @@
   <h3 class="margin">Marvellous spots</h3><br>
   <div class="row">
     <div class="col-sm-4">
-      <p>Man made living root bridge. <br>Meghalaya, India. </p>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Double_decker_living_root_bridge_at_Meghalaya.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+      <p>Fyrisån river, looking south from Hamnspågen by -9°C. <br>Uppsala, Sweden</p>
+      <img src="{% static 'images/homepage/fyrisan_winter.jpg' %}" class="img-responsive margin" style="width:100%" alt="Image">
     </div>
     <div class="col-sm-4">
-      <p>Eiffel Tower. <br>Paris, France</p>
-      <img src="https://c.pxhere.com/photos/0e/f6/sun_paris_france_tower_monument_clouds_lumix_ledefrance-339651.jpg!d" class="img-responsive margin" style="width:100%" alt="Image">
+      <p>Cherry blossoms during spring (May) at Kungsträdgården. <br>Stockholm, Sweden. </p>
+      <img src="{% static 'images/homepage/cherry_blossoms.jpg' %}" class="img-responsive margin" style="width:100%" alt="Image">
     </div>
     <div class="col-sm-4">
-      <p>Yosemite National Park. <br>California, USA</p>
-      <img src="https://c1.staticflickr.com/4/3512/5763418254_e2f42b2224_b.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+      <p>Fyrisån river, looking south from Kungsängsleden Bridge by -22°C. <br>Uppsala, Sweden</p>
+      <img src="{% static 'images/homepage/bridge_uppsala.jpg' %}" class="img-responsive margin" style="width:100%" alt="Image">
     </div>
   </div>
 </div>
