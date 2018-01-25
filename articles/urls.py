@@ -20,4 +20,6 @@ urlpatterns = [
     url(r'^$', views.blog, name='blog'),
     url(r'^detail/(?P<pk>\d+)$', views.article_detail, name='article_detail'),
     url(r'^create/', views.create_article, name='create_article'),
+    url(r'^edit/(?P<pk>\d+)$', views.edit_article, name='edit_article'),
+    url(r'^delete/(?P<pk>\d+)$', views.delete_article, name='delete_article')
 ]
