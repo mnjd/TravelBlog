@@ -5,7 +5,7 @@
     <h2>{{ article.title }}</h2>
     <h5><span class="glyphicon glyphicon-time"></span> Post by {{ article.author }}, {{ article.created_at }}</h5>
     <p>{{ article.body|truncatechars:100 }}</p>
-    <a href="{% url 'article_detail' article.pk %}">Read more</a>
+    <a href="{% url 'articles:article_detail' article.pk %}">Read more</a>
     <br><br>
   {% endfor %}
 {% endblock %}
