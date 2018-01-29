@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import UpdateView, CreateView, DeleteView
 from .models import Articles
 from .forms import ArticlesForm
-from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
@@ -21,14 +20,29 @@ def article_detail(request, pk):
 
 @login_required(login_url="/users/login/")
 def create_article(request):
-    form = ArticlesForm(request.POST)
-    if form.is_valid():
-        newform = form.save(commit=False)
-        newform.save()
+    if request.method == 'POST':
+        form = ArticlesForm(request.POST)
+        if form.is_valid():
+            newform = form.save(commit=False)
+            newform.author = request.user
+            newform.save()
         return redirect('articles:blog')
-        
-    context = {'form':form}        
-    return render(request, 'articles/CreateArticle.html', context)
+    else:
+        form = ArticlesForm()       
+    return render(request, 'articles/CreateArticle.html', { 'form':form })
+
+'''
+def create_article(request):
+    if request.POST == 'POST':
+        form = ArticlesForm(request.POST)
+        if form.is_valid():
+            newform = form.save(commit=False)
+            newform.save()
+        return redirect('articles:blog')
+    else:
+        form = ArticlesForm()
+    return render(request, 'articles/CreateArticle.html', {'form':form})
+'''
 
 @login_required(login_url="/users/login/")
 def edit_article(request, pk=None):
