@@ -7,16 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <nav>
-	<ul>
-		  <li>
-		  	<form class="logout-link" action="{% url 'users:logout' %}" method="post">
-			{% csrf_token %}
-			<button type="submit">Logout</button>
-			</form>
-		  </li>
-	</ul>
-  </nav>
+
   <style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
     .row.content {height: 1500px}
@@ -47,6 +38,40 @@
 
 
 <body>
+<nav>
+
+<div class="row" style="color:red; margin:10px; background-color:#eee;">
+    <div class="col-xs-2">
+            {% if user.is_authenticated %}
+                <h4>Logged in as {{ user.username }}. </h4>
+            {% else %}
+                 <h4>You are not logged in. </h4>
+            {% endif %}
+    </div>
+    <div class="col-xs-10">
+        {% if user.is_authenticated %}
+          	<form class="logout-link" action="{% url 'users:logout' %}" method="post">
+			{% csrf_token %}
+			<button type="submit" style="float: right">Logout</button>
+			</form>
+		{% else %}
+          	<form class="login-link" action="{% url 'users:login' %}" method="post">
+			{% csrf_token %}
+			<button type="submit" style="float: right">Login</button>
+			</form>
+
+         	<form class="signup-link" action="{% url 'users:signup' %}" method="post">
+			{% csrf_token %}
+			<button type="submit" style="float: right">Signup</button>
+			</form>
+
+        {% endif %}
+
+    </div>
+</div>
+
+</nav>
+
 
 <div class="container-fluid">
   <div class="row content">
@@ -55,7 +80,9 @@
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="{% url 'home' %}">Home</a></li>
         <li class=""><a href="{% url 'articles:blog' %}">Blog</a></li>
-        <li class=""><a href="{% url 'articles:create_article' %}">Create Article</a></li>
+          {% if user.is_authenticated %}
+            <li class=""><a href="{% url 'articles:create_article' %}">Create Article</a></li>
+          {% endif %}
       </ul><br>
     </div>
 
