@@ -3,9 +3,19 @@
 
 {% block content %}
     <h2>{{ article.title }}</h2>
-    <h5><span class="glyphicon glyphicon-time"></span> Post by {{ article.author }}, {{ article.created_at }}</h5>
+    <h5><span class="glyphicon glyphicon-time"></span> Post by {{ article.author }}, {{ article.created_at }}
+    {% if article.is_updated %}
+          Updated at {{ article.updated_at }}
+    {% endif %}</h5>
     <p>{{ article.body}}</p>
     <br><br>
-    <a href="{% url 'articles:edit_article' article.pk %}" class="btn btn-warning">Edit Article</a>
-    <a href="{% url 'articles:delete_article' article.pk %}" class="btn btn-danger">Delete Article</a>
+    {% if user.is_authenticated %}
+        {% if user == article.author %}
+            <a href="{% url 'articles:edit_article' article.pk %}" class="btn btn-warning">Edit Article</a>
+            <a href="{% url 'articles:delete_article' article.pk %}" class="btn btn-danger">Delete Article</a>
+        {% else %}
+            <a href="{% url 'articles:edit_article' article.pk %}" class="btn btn-warning disabled">Edit Article</a>
+            <a href="{% url 'articles:delete_article' article.pk %}" class="btn btn-danger disabled">Delete Article</a>
+        {% endif %}
+    {% endif %}
 {% endblock %}
