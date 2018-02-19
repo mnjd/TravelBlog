@@ -3,7 +3,6 @@ from django.views.generic import UpdateView, CreateView, DeleteView
 from django.utils import timezone
 from .models import Articles
 from .forms import ArticlesForm
-from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
