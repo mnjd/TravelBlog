@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^about/$', views.about, name='about'),
     url(r'^$', views.homepage, name='home'),
     url(r'^users/', include('users.urls')),
+    url(r'^api/posts/', include('articles.api.urls'), name='blog-api'),
 ]
